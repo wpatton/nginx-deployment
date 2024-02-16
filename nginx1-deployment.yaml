@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx1
+  namespace: wpatton
+spec:
+  selector:
+    matchLabels:
+      app: nginx1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx1
+        tier: frontend
+    spec:
+      containers:
+      - name: nginx1
+        image: waynepatton/nginx1:latest
+        ports:
+        - containerPort: 80
